@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "forceConsistentCasingInFileNames": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "strict": false,
+        "module": "es6",
+        "target": "es5",
+        "outDir": "./dist",
+        "allowJs": true,
+        "moduleResolution": "node",
+        "baseUrl": "./src/",
+        "paths": {
+            "*": ["src/*"]
+        }
+    },
+    "include": ["src/**/*", "custom.d.ts"]
+}

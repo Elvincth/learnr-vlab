@@ -1,0 +1,60 @@
+{
+    "private": true,
+    "name": "boilerplate-webpack-babel",
+    "version": "1.2.1",
+    "description": "Starter with Webpack & Babel.js",
+    "license": "MIT",
+    "author": {
+        "name": "Elvin Chu",
+        "email": "elvin.chu@connect.polyu.hk"
+    },
+    "scripts": {
+        "clear": "rm -rf dist/",
+        "clear:all": "rm -rf node_modules/ && npm run clear",
+        "prebuild": "npm run clear",
+        "build": "npm run build:prod",
+        "build:dev": "webpack --config webpack/webpack.config.js",
+        "build:prod": "webpack --config webpack/webpack.config.js --env production",
+        "dev": "npm run build:dev -- -w",
+        "start": "http-server dist/ -c-1",
+        "server": "webpack-dev-server --config webpack/webpack.config.js"
+    },
+    "devDependencies": {
+        "@swc/core": "^1.2.207",
+        "@types/toastify-js": "^1.11.1",
+        "babel-loader": "^8.2.3",
+        "css-loader": "^6.7.1",
+        "file-loader": "^6.2.0",
+        "filemanager-webpack-plugin": "^7.0.0",
+        "http-server": "^14.1.0",
+        "regenerator-runtime": "^0.13.9",
+        "sass": "^1.52.3",
+        "sass-loader": "^13.0.0",
+        "style-loader": "^3.3.1",
+        "swc-loader": "^0.2.3",
+        "terser-webpack-plugin": "^5.3.3",
+        "ts-loader": "^9.3.0",
+        "typescript": "^4.7.3",
+        "webpack": "^5.66.0",
+        "webpack-bundle-analyzer": "^4.5.0",
+        "webpack-cli": "^4.9.1",
+        "webpack-dev-server": "^4.7.3",
+        "webpack-merge": "^5.8.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/piecioshka/boilerplate-webpack-babel"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.1.1",
+        "@types/jquery": "^3.5.14",
+        "@types/js-cookie": "^3.0.2",
+        "animate.css": "^4.1.1",
+        "axios": "^0.27.2",
+        "gridjs": "^5.0.2",
+        "html2pdf.js": "0.9.0",
+        "js-cookie": "^3.0.1",
+        "keycloak-js": "^19.0.0",
+        "toastify-js": "^1.11.2"
+    }
+}

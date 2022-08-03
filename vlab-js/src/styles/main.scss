@@ -1,0 +1,28 @@
+.fa-circle-check {
+    color: #6bd418;
+}
+
+.fa-circle-xmark {
+    color: #ff0000;
+}
+
+.hide {
+    opacity: 0;
+    transition: 0.2s opacity;
+}
+
+.vlab-- {
+    &question-link {
+        color: #2fa4e7;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &question-preview {
+        display: block;
+        pointer-events: none;
+        opacity: 0.3;
+    }
+}

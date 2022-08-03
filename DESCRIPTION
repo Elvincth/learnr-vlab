@@ -1,0 +1,11 @@
+Package: vlab
+Type: Package
+Title: LearnR Virtual Lab Helper
+Version: 0.1.1
+Author: elvincth
+Maintainer: elvincth <elvincth@gmail.com>
+Description: Superset of learnR 
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.0
