@@ -21,3 +21,13 @@ show_login_model <- function(session) {
     session
   )
 }
+
+#init vlabjs client side keycloak auth with the options passed in
+auth_init <- function(session)
+{
+  session$sendCustomMessage("auth_init", list(
+    url = getOption("vlab.keycloak_url"),
+    client_id = getOption("vlab.keycloak_client_id"),
+    realm = getOption("vlab.keycloak_realm")
+  ))
+}

@@ -76,7 +76,7 @@ sumbit_data <- function(my_data, object_id, type) {
 
     showNotification(
       paste("Error while submitting, please try again. Code:", httr::status_code(res), sep=" "),
-      duration = 0,
+      duration = 3000,
       type = "error"
     )
   }

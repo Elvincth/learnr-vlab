@@ -4,9 +4,5 @@
 # install knitr hooks when package is attached to search path
 .onAttach <- function(libname, pkgname) {
   initialize_vlab()
-}
-
-.onLoad <- function(libname, pkgname) {
   install_mark_knitr_hooks()
 }
-

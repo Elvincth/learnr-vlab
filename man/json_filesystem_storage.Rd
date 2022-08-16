@@ -4,7 +4,7 @@
 \alias{json_filesystem_storage}
 \title{Filesystem-based JSON storage for tutor state data}
 \usage{
-json_filesystem_storage(dir = getwd())
+json_filesystem_storage()
 }
 \arguments{
 \item{dir}{Directory to store state data within}

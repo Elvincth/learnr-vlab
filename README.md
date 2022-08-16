@@ -3,9 +3,6 @@
 All source files are located under the `R` folder.
 The `vlab-js` folder is another project, it is the client javascript library for the learnR.
 
-# Install
-Run `devtools::install_github("polyu-vlab/vlab")`
-
 # Development
 
 1. Run `build.R` in the root, it is a post build script.

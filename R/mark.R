@@ -19,6 +19,14 @@ override_setup_exercise_handler = function() {
   # run an exercise and return HTML UI
   setup_exercise_handler <- function(exercise_rx, session) {
 
+    htmltools::htmlDependency(
+      name = "vlab",
+      version = utils::packageVersion("vlab"),
+      src = "dist",
+      package = "vlab",
+      script = "vlab_bundle.js"
+    )
+
     # get the environment where shared setup and data is located. one environment up
     # includes all of the shiny housekeeping (e.g. inputs, output, etc.); two
     # environments up will be an empty environment
