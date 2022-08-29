@@ -20,7 +20,6 @@ vlab_js_init <- function(session)
 #'
 #' @keywords internal
 initialize_vlab <- function() {
-  if (is_shiny_app()) {
     #weather to disable the vlab package
     isDisable <- getOption("vlab.disable", default = FALSE)
 
@@ -63,7 +62,6 @@ initialize_vlab <- function() {
         send_vlab_state_update(session)
       })
     }
-  }
 }
 
 

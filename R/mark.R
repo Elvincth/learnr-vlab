@@ -5,7 +5,7 @@ install_mark_knitr_hooks <- function() {
   #see: https://bookdown.org/yihui/rmarkdown-cookbook/option-hooks.html
   knitr::opts_hooks$set(
     mark = function(options) {
-      label <- opts_current$get(name = "label")
+      label <- knitr::opts_current$get(name = "label")
       #test if the mark option is valid
       if (!grepl("^[0-9]{1,}$", options$mark)) {
         stop(paste0("error in ", label, " mark option must be NUMBER!"))
