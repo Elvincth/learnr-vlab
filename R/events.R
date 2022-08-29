@@ -1,6 +1,5 @@
 #send updated info to vlab.js
-send_vlab_state_update <- function() {
-  session <- shiny::getDefaultReactiveDomain()
+send_vlab_state_update <- function(session) {
   label <- learnr:::get_tutorial_info(session)$items$label
   session$sendCustomMessage(
     "vlab_state_update",

@@ -49,12 +49,6 @@
  */
 
 /*!
- * Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- * Copyright 2022 Fonticons, Inc.
- */
-
-/*!
  * Toastify js 1.11.2
  * https://github.com/apvarun/toastify-js
  * @license MIT licensed
@@ -83,12 +77,14 @@
     PERFORMANCE OF THIS SOFTWARE.
     ***************************************************************************** */
 
+/*! vlab-js v0.1.3 */
+
 /**
    * @license
-   *
+   * 
    * Copyright (c) 2014 James Robb, https://github.com/jamesbrobb
    *
-   *
+   * 
    * ====================================================================
    */
 
@@ -104,13 +100,13 @@
    * @license
    * Copyright (c) 2016 Alexander Weidt,
    * https://github.com/BiggA94
-   *
+   * 
    * Licensed under the MIT License. http://opensource.org/licenses/mit-license
    */
 
 /**
    * @license
-   * Copyright (c) 2017 Aras Abbasi
+   * Copyright (c) 2017 Aras Abbasi 
    *
    * Licensed under the MIT License.
    * http://opensource.org/licenses/mit-license
@@ -132,7 +128,7 @@
    *               2014 Steven Spungin, https://github.com/flamenco
    *
    * @license
-   *
+   * 
    * ====================================================================
    */
 
@@ -163,7 +159,7 @@
  * @license MIT
  */
 
-/**
+/** 
    * @license
    * ====================================================================
    * Copyright (c) 2013 Youssef Beddad, youssef.beddad@gmail.com
@@ -173,14 +169,14 @@
    *               2014 James Hall, james@parall.ax
    *               2014 Diego Casorran, https://github.com/diegocr
    *
-   *
+   * 
    * ====================================================================
    */
 
 /** @license
    * Copyright (c) 2012 Willow Systems Corporation, willow-systems.com
-   *
-   *
+   * 
+   * 
    * ====================================================================
    */
 
@@ -189,7 +185,7 @@
    * Copyright (c) 2012 Willow Systems Corporation, willow-systems.com
    *               2014 Diego Casorran, https://github.com/diegocr
    *
-   *
+   * 
    * ====================================================================
    */
 
@@ -232,13 +228,13 @@
    *               2014 Diego Casorran, https://github.com/diegocr
    *               2014 James Robb, https://github.com/jamesbrobb
    *
-   *
+   * 
    */
 
 /** @license
    jsPDF standard_fonts_metrics plugin
    * Copyright (c) 2012 Willow Systems Corporation, willow-systems.com
    * MIT license.
-   *
+   * 
    * ====================================================================
    */

@@ -3,101 +3,67 @@ api_url <-"" #base api url option e.g."http://localhost:3000" (vlab.course_code)
 course_code <- "" #course code option (vlab.api_url)
 
 
-#' Initialize the virtual lab package
-#' It is called once in zzz.R when the package is being use
-#'
-#' @keywords internal
-initialize_vlab <- function() {
-  if(is_shiny_runtime()){
-
-
-    init_options()
-  }
-
-  #add new events triggers
-  register_new_event_handlers()
-
-  override_question_fn()
-  override_setup_exercise_handler()
-
-  #use our own tutorial json storage
- # options(tutorial.storage = json_filesystem_storage())
-
-  # options(tutorial.event_recorder = new_recorder)
-
-  event_register_handler("session_start", function(session, event, data) {
-    auth_init(session)
-    show_login_model(session)
-    register_access_token_listener()
-    register_submit_listener()
-    send_vlab_state_update()
-  })
-
-  event_register_handler("exercise_result", function(session, event, data) {
-    if (!is.null(data$feedback)) {
-      sumbit_data(data, data$label, "exercise_result")
-    }
-    send_vlab_state_update()
-  })
-
-  event_register_handler("exercise_submitted", function(session, event, data) {
-    send_vlab_state_update()
-  })
-
-  event_register_handler("question_submission", function(session, event, data) {
-    sumbit_data(data, data$label, "question_submission")
-    send_vlab_state_update()
-  })
+#init vlabjs client side keycloak auth with others options passed in
+vlab_js_init <- function(session)
+{
+  session$sendCustomMessage("vlab_init", list(
+    url = getOption("vlab.keycloak_url"),
+    client_id = getOption("vlab.keycloak_client_id"),
+    realm = getOption("vlab.keycloak_realm"),
+    course_code =  getOption("vlab.course_code"),
+    assignment_id = getOption("vlab.id")
+  ))
 }
-
-packageEnv <- new.env()
-api_url <-"" #base api url option e.g."http://localhost:3000" (vlab.course_code)
-course_code <- "" #course code option (vlab.api_url)
-
 
 #' Initialize the virtual lab package
 #' It is called once in zzz.R when the package is being use
 #'
 #' @keywords internal
 initialize_vlab <- function() {
-  if(is_shiny_runtime()){
-    init_options()
-  }
+  if (is_shiny_app()) {
+    #weather to disable the vlab package
+    isDisable <- getOption("vlab.disable", default = FALSE)
 
-  #add new events triggers
-  register_new_event_handlers()
+    if (isFALSE(isDisable)) {
+      init_options()
 
-  override_question_fn()
-  override_setup_exercise_handler()
+      #add new events triggers
+      register_new_event_handlers()
 
+      override_question_fn()
+      override_setup_exercise_handler()
 
-  #use our own tutorial json storage
- # options(tutorial.storage = json_filesystem_storage())
+      #use our own tutorial json storage
+      # options(tutorial.storage = json_filesystem_storage())
 
-  # options(tutorial.event_recorder = new_recorder)
+      # options(tutorial.event_recorder = new_recorder)
 
-  event_register_handler("session_start", function(session, event, data) {
-    auth_init(session)
-    show_login_model(session)
-    register_access_token_listener()
-    register_submit_listener()
-    send_vlab_state_update()
-  })
+      event_register_handler("session_start", function(session, event, data) {
+        vlab_js_init(session)
+        show_login_model(session)
+        health_check(session)
+        register_access_token_listener()
+        register_submit_listener()
+        send_vlab_state_update(session)
+      })
 
-  event_register_handler("exercise_result", function(session, event, data) {
-    if (!is.null(data$feedback)) {
-      sumbit_data(data, data$label, "exercise_result")
+      event_register_handler("exercise_result", function(session, event, data) {
+        if (!is.null(data$feedback) && !is.null(data$mark)) {
+          sumbit_data(data, data$label, "exercise_result")
+          send_vlab_state_update(session)
+        }
+      })
+
+      event_register_handler("exercise_submitted", function(session, event, data) {
+        send_vlab_state_update(session)
+      })
+
+      event_register_handler("question_submission", function(session, event, data) {
+        sumbit_data(data, data$label, "question_submission")
+        send_vlab_state_update(session)
+      })
     }
-    send_vlab_state_update()
-  })
-
-  event_register_handler("exercise_submitted", function(session, event, data) {
-    send_vlab_state_update()
-  })
-
-  event_register_handler("question_submission", function(session, event, data) {
-    sumbit_data(data, data$label, "question_submission")
-    send_vlab_state_update()
-  })
+  }
 }
+
 

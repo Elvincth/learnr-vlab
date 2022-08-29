@@ -32,13 +32,13 @@ set_option <- function(option_name = NULL, env_name = NULL, default = NULL) {
   # option can be set by environment variable
   if (!is.null(env_name)) {
     env_var <- Sys.getenv(env_name)
-    if (!is.null(env_var) && env_var != "") {
+    if (env_var != "") {
       options(option_name = env_var)
     } else if (is.null(getOption(option_name))) {
       if (!is.null(default)) {
         options(option_name = default)
       } else {
-        stop(
+        warning(
           paste0(
             "[VLAB] please set the environment variable ",
             env_name,
@@ -54,7 +54,7 @@ set_option <- function(option_name = NULL, env_name = NULL, default = NULL) {
       if (!is.null(default)) {
         options(option_name = default)
       } else {
-        stop(paste0("[VLAB] please set the option ", option_name, "\n"))
+        warning(paste0("[VLAB] please set the option ", option_name, "\n"))
       }
     }
   }
@@ -100,8 +100,7 @@ metadata <- function() {
     }
 
     if (is.null(getOption("vlab.api_url")) || getOption("vlab.api_url") == "") {
-      warning("vlab.api_url is NULL, http://localhost:3000 is used")
-      options(vlab.api_url = "http://localhost:3000")
+      stop("vlab.api_url cannot be NULL")
     }
   }
 
