@@ -10,6 +10,12 @@ send_vlab_state_update <- function(session) {
     )
   )
 }
+#
+# #send api url to vlab.js
+# send_api_url <- function(session) {
+#   session$sendCustomMessage("vlab_api_url", getOption("vlab.api_url"))
+# }
+
 
 
 #' Register new custom events for learnr

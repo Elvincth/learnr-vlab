@@ -44,6 +44,7 @@ initialize_vlab <- function() {
         register_access_token_listener()
         register_submit_listener()
         send_vlab_state_update(session)
+        #send_api_url(session)
       })
 
       event_register_handler("exercise_result", function(session, event, data) {

@@ -1,26 +1,3 @@
-access_token <- "" #store the access token of the user
-
-#' Listen to the vlabjs that pass the access token to R
-#' See: https://shiny.rstudio.com/articles/communicating-with-js.html
-#'
-#' @noRd
-register_access_token_listener <- function()
-{
-  p = parent.frame()
-  local({
-    shiny::observeEvent(session$input$vlab_access_token, {
-      # access_token <<- session$input$vlab_access_token
-
-      assign("access_token",
-             session$input$vlab_access_token,
-             envir = packageEnv)
-      # cat("vlab: access token recived",
-      #     get("access_token", envir = packageEnv))
-    })
-  }, envir = p)
-}
-
-
 
 #run health check after auth, check is the assignment ready for submissions
 health_check <- function(session){
@@ -99,6 +76,7 @@ health_check <- function(session){
                       })
 }
 
+
 #create the assignment in dashboard
 create_assignment <- function() {
   access_token <-
@@ -146,16 +124,16 @@ create_assignment <- function() {
   })
 }
 
-show_warning <- function(msg, duration = 10) {
-  showNotification(
+show_warning <- function(msg, duration = 3000) {
+  show_notifcation(
     paste("Warning: ", msg, sep = " "),
     duration = duration,
     type = "warning"
   )
 }
 
-show_error <- function(msg, duration = 10) {
-  showNotification(
+show_error <- function(msg, duration = 3000) {
+  show_notifcation(
     paste("Error occur: ", msg, sep = " "),
     duration = duration,
     type = "error"
@@ -224,8 +202,11 @@ sumbit_data <- function(my_data, object_id, type) {
       httr::message_for_status(res)
       stop(paste("Code:", httr::status_code(res), " ", content$error, sep = " "))
     }else{
-      shiny::showNotification(paste("Submit successfully.", sep = " "),
-                       duration = 10, type="message")
+      show_notifcation(paste("Submit successfully.", sep = " "),
+                       duration = 3000, type="info")
+
+      #trigger update on the question review table
+      question_review_update()
     }
   },
   error = function(cond) {
@@ -237,8 +218,8 @@ sumbit_data <- function(my_data, object_id, type) {
 }
 
 #display error message
-show_submission_error_msg <- function(msg, duration = 10) {
-  showNotification(
+show_submission_error_msg <- function(msg, duration = 3000) {
+  show_notifcation(
     paste("Error while submitting, please try again. ", msg, sep = " "),
     duration = duration,
     type = "error"

@@ -92,15 +92,15 @@ metadata <- function() {
     # learnr::tutorial_options(exercise.reveal_solution = identical(metadata$vlab$mode, "lab"))
 
     if (is.null(getOption("vlab.id")) || getOption("vlab.id") == "") {
-      stop("vlab.id cannot be NULL")
+      warning("vlab.id cannot be NULL")
     }
 
     if (is.null(getOption("vlab.course_code")) || getOption("vlab.course_code") == "") {
-      stop("vlab.course_code cannot be NULL")
+      warning("vlab.course_code cannot be NULL")
     }
 
     if (is.null(getOption("vlab.api_url")) || getOption("vlab.api_url") == "") {
-      stop("vlab.api_url cannot be NULL")
+      warning("vlab.api_url cannot be NULL")
     }
   }
 
