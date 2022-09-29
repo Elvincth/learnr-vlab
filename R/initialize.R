@@ -48,13 +48,14 @@ initialize_vlab <- function() {
       })
 
       event_register_handler("exercise_result", function(session, event, data) {
-        if (!is.null(data$feedback) && !is.null(data$mark)) {
+        if (isTRUE(data$checked)) {
           sumbit_data(data, data$label, "exercise_result")
           send_vlab_state_update(session)
         }
       })
 
       event_register_handler("exercise_submitted", function(session, event, data) {
+        print(paste0("[Event] ", event, data))
         send_vlab_state_update(session)
       })
 
