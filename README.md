@@ -1,41 +1,43 @@
+
 # Get started
 
-All source files are located under the `R` folder.
-The `vlab-js` folder is another project, it is the client javascript library for the learnR.
+## Install the package
+```
+remotes::install_github('polyu-vlab/vlab')
+```
 
-# Development
+## Import and setup the package
 
-1. Run `build.R` in the root, it is a post build script.
+````
 
-2. In r studio go to build > install and restart, to install the library for testing.
+```{=html}
+<script language="JavaScript" src="https://cdn.jsdelivr.net/gh/polyu-vlab/vlab/inst/dist/vlab_bundle.js"></script>
+```
 
-### Note
+```{r setup, include=FALSE}
+options(
+  #vlab.disable = TRUE, #weather to disable the vlab package
+  vlab.title = "Some title",
+  vlab.id = "asm1",
+  vlab.api_url = Sys.getenv("API_URL"),
+  vlab.course_code = Sys.getenv("COURSE_CODE"),
+  vlab.keycloak_url = Sys.getenv("KEYCLOAK_URL"),
+  vlab.keycloak_client_id = Sys.getenv("KEYCLOAK_CLIENT_ID"),
+  vlab.keycloak_realm = Sys.getenv("KEYCLOAK_REALM")
+)
 
-For each function we need to apply a roxygen comments (see: https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html), so that method could be documented and internal function won't get exported.
+library(vlab)
+```
+````
 
 # Features
-
-## Import the library
-
-```
-library(polyuvlab)
-```
-
-## Configs
-
-Define the mode, lab mode will show the solution, and the lab mode will not.
-
-```
-vlab:
-  mode: 'quiz' #quiz or lab
-```
 
 ## Storage
 
 Use the json filesystem storage, which store the tutorial state in a `.json` file, which make it easy to share the state to server.
 
 ```
-options(tutorial.storage = polyuvlab::json_filesystem_storage())
+options(tutorial.storage = vlab::json_filesystem_storage())
 ```
 
 ## New events
@@ -52,7 +54,15 @@ topic_viewed
 
 ```
 
-## New blocks
+## Elements
+
+### Quesion review table with print table
+````
+```{r, echo=FALSE}
+print_button()
+review_table()
+```
+````
 
 ### Question with no ack
 
@@ -76,23 +86,23 @@ allow_retry = TRUE
 
 ```
 
-### note
-
-```{r note}
+### Note
+````
+```{r}
 note("Hello, world")
 ```
+````
 
-### question review table
 
-```{r, echo=FALSE}
-review_table()
-```
+# Development
 
-### print button
-```{r context='server', echo=FALSE}
-print_button_logic()
-```
+All source files are located under the `R` folder.
+The `vlab-js` folder is another project, it is the client javascript library for the learnR.
 
-```{r, echo=FALSE}
-print_button()
-```
+1. Run `build.R` in the root, it is a post build script.
+
+2. In r studio go to build > install and restart, to install the library for testing.
+
+### Note
+
+For each function we need to apply a roxygen comments (see: https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html), so that method could be documented and internal function won't get exported.
