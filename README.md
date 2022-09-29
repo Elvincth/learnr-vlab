@@ -11,7 +11,7 @@ remotes::install_github('polyu-vlab/vlab')
 ````
 
 ```{=html}
-<script language="JavaScript" src="https://cdn.jsdelivr.net/gh/polyu-vlab/vlab/inst/dist/vlab_bundle.js"></script>
+<script language="JavaScript" src="https://cdn.jsdelivr.net/gh/polyu-vlab/vlab@latest/inst/dist/vlab_bundle.js"></script>
 ```
 
 ```{r setup, include=FALSE}
