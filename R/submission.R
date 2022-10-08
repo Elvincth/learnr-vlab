@@ -84,10 +84,11 @@ create_assignment <- function() {
 
   my_url = paste0(
     getOption("vlab.api_url"),
-    "/api/assignments/create/",
+    "/api/assignments/",
     getOption("vlab.course_code"),
     "/",
-    getOption("vlab.id")
+    getOption("vlab.id"),
+    "/create"
   )
 
   #print(access_token)
