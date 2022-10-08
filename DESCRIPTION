@@ -1,7 +1,7 @@
 Package: vlab
 Type: Package
 Title: LearnR Virtual Lab Helper
-Version: 0.2.4
+Version: 0.2.8
 Author: elvincth
 Maintainer: elvincth <elvin.chu@connect.polyu.hk>
 Description: Superset of learnR 

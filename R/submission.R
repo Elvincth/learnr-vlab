@@ -159,9 +159,6 @@ sumbit_data <- function(my_data, object_id, type) {
   )
 
 
-  print("my_body")
-
-  print(my_body)
 
   if (!is.null(my_data$feedback$correct)) {
     print("have correct")
@@ -173,6 +170,9 @@ sumbit_data <- function(my_data, object_id, type) {
   }
 
 
+  print("my_body")
+
+  print(my_body)
 
   my_url = paste0(api_url,
                   "/api/submissions/",
@@ -202,7 +202,7 @@ sumbit_data <- function(my_data, object_id, type) {
       httr::message_for_status(res)
       stop(paste("Code:", httr::status_code(res), " ", content$error, sep = " "))
     }else{
-      show_notifcation(paste("Submit successfully.", sep = " "),
+      show_notifcation(paste("Your answer has been submitted.", sep = " "),
                        duration = 3000, type="info")
 
       #trigger update on the question review table
